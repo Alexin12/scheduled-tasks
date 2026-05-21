@@ -23,23 +23,34 @@ jobs:
 
       - name: Check secrets are configured
         env:
-          MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+            OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
+            TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+            TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
         run: |
-          if [ -z "$MY_EMAIL" ]; then
-            echo "MY_EMAIL secret is not set!"
+          if [ -z "$OWM_API_KEY" ]; then
+            echo "OWM_API_KEY secret is not set!"
             echo "Go to Settings > Secrets > Actions and add it."
             exit 1
           else
-            echo "MY_EMAIL is configured"
+            echo "OWM_API_KEY is configured"
           fi
 
-          if [ -z "$MY_PASSWORD" ]; then
-            echo "MY_PASSWORD secret is not set!"
+          if [ -z "$TWILIO_ACCOUNT_SID" ]; then
+            echo "TWILIO_ACCOUNT_SID secret is not set!"
             echo "Go to Settings > Secrets > Actions and add it."
             exit 1
+            
           else
-            echo "MY_PASSWORD is configured"
+            echo "TWILIO_ACCOUNT_SID is configured"
+          fi
+
+          if [ -z "$TWILIO_AUTH_TOKEN" ]; then
+            echo "TWILIO_AUTH_TOKEN secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+
+          else
+            echo "TWILIO_AUTH_TOKEN is configured"
           fi
 
           echo ""
