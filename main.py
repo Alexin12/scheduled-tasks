@@ -1,12 +1,11 @@
 import requests
 import os
 from twilio.rest import Client
-API_KEY = "a5684aed171b416a353884f53bcbaf02"
-
+OWM_API_KEY = os.getenv("OWM_API_KEY")
 query_para = {
     "lat": 30.433283,
     "lon": -87.240372,
-    "appid": API_KEY,
+    "appid": OWM_API_KEY,
     "cnt" :4
 }
 
